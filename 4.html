@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind, v-html</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="vue-scope-area-4">
+        <h1>{{ topicFunc() }}</h1>
+        <h3>{{ number }}</h3>
+        <button v-on:click="increment(10)">+10</button>
+        <button @click="decrement(10)">-10</button>
+        <div>
+            <!-- Event Argument -->
+            <input @keyup.13="enterPressed" placeholder="Enter Pressed" />
+        </div>
+    </div>
+
+    <script>
+        // vue instance will control a area in your page
+        new Vue({
+            el: "#vue-scope-area-4",
+            data: {
+                topics: ["Event Binding", "Event Arguments"],
+                number: 0
+            },
+            methods: {
+                increment: function(value) {
+                    this.number += value
+                },
+                decrement: function(value) {
+                    this.number -= value
+                },
+                topicFunc: function() {
+                    return this.topics.toString()
+                },
+                enterPressed: function(e) {
+                    console.log(e.target.value)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
