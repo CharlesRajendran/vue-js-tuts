@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind, v-html</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="vue-scope-area-5">
+        <h1>{{ topicFunc() }}</h1>
+        <div>
+            <!-- Event Modifiers - https://vuejs.org/v2/guide/events.html#Event-Modifiers -->
+            <button @click.once="alertOnce">alert once</button>
+
+            <!-- Will prevent the default behaviour, will just alert and not navigate -->
+            <a @click.prevent="alertOnce" href="https://facebook.com">Will prevent default behaviour</a>
+
+            <!-- Keyboard Modifiers -->
+            <input @keydown.tab="tabPressed" placeholder="Test Tab Pressed">
+            <input @keyup.13="enterPressed" placeholder="Enter Pressed" />
+
+            <!-- Multiple Key Combinations -->
+            <input @keydown.alt.enter="enterPressed" placeholder="Enter with Alt Key" />
+
+            <!-- Exact - this will call functions only when you press the exact key or event -->
+            <input @keydown.65.exact="enterPressed" placeholder="Fire Only when tou just press enter" />
+        </div>
+    </div>
+
+    <script>
+        // vue instance will control a area in your page
+        new Vue({
+            el: "#vue-scope-area-5",
+            data: {
+                topics: ["Event Modifiers", "Keyboard Modifiers"]
+            },
+            methods: {
+                tabPressed() {
+                    console.log("Tab Pressed");
+                },
+                enterPressed() {
+                    console.log("Enter Pressed");
+                },
+                alertOnce() {
+                    alert('Hi There');
+                },
+                topicFunc: function() {
+                    return this.topics.toString()
+                }
+            }
+        })
+    </script>
+</body>
+</html>

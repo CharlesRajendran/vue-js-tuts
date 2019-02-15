@@ -10,28 +10,23 @@
 </head>
 <body>
 
-    <div id="vue-scope-area-4">
+    <div id="vue-scope-area-6">
         <h1>{{ topicFunc() }}</h1>
-        <h3>{{ number }}</h3>
-        <button v-on:click="increment(10)">+10</button>
-        <button @click="decrement(10)">-10</button>
+        <div>
+           <input v-model="message" />
+           <h3> {{message}}</h3>
+        </div>
     </div>
 
     <script>
         // vue instance will control a area in your page
         new Vue({
-            el: "#vue-scope-area-4",
+            el: "#vue-scope-area-6",
             data: {
-                topics: ["Event Binding"],
-                number: 0
+                topics: ["Two Way Data Binding"],
+                message: ""
             },
             methods: {
-                increment: function(value) {
-                    this.number += value
-                },
-                decrement: function(value) {
-                    this.number -= value
-                },
                 topicFunc: function() {
                     return this.topics.toString()
                 }
