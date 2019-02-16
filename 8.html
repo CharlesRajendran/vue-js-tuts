@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="vue-app">
+        <h1>{{ topicFunc() }}</h1>
+        <button v-on:click="fill = !fill" > Toggle Fill </button>
+        <div class="box" v-bind:class="{blackbox: fill, whitebox: !fill}">
+
+        </div>
+
+        <p v-bind:style="{fontWeight:isBold, fontSize: fontSize}"> Is Bold or Not <p>
+    </div>
+    <script>
+        new Vue({
+            el: "#vue-app",
+            data: {
+                topics: ["Class Biding", "Style Biding"],
+                fill: true
+            },
+            methods: {
+                topicFunc: function() {
+                    return this.topics.toString()
+                }
+            },
+            computed: {
+                isBold: function() {
+                    return this.fill ? 'bolder': '';
+                },
+                fontSize: function() {
+                    return this.fill ? '30px': '14px';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

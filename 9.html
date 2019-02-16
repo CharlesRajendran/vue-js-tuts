@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="vue-conditionals">
+        <h1>{{ topicFunc() }}</h1>
+        <button v-on:click="show = 0">Show Red</button>
+        <button v-on:click="show = 1">Show Yellow</button>
+        <button v-on:click="show = 2">Show Green</button>
+
+        <!-- v-if will completely re render the generated html and it will not have the p tag -->
+        <h1 v-if="show == 0">Show Red</h1>
+        <h1 v-else-if="show == 1">Show Yellow</h1>
+        <h1 v-else="show == 2">Show Green</h1>
+
+        <!-- v-show will only control the display property of the element -->
+        <h1 v-show="show == 0">Show Red</h1>
+        <h1 v-show="show == 1">Show Yellow</h1>
+        <h1 v-show="show == 2">Show Green</h1>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#vue-conditionals",
+            data: {
+                topics: ["v-if", "v-else-if", "v-show"],
+                show: 2
+            },
+            methods: {
+                topicFunc: function() {
+                    return this.topics.toString()
+                }
+            },
+            computed: {
+                isBold: function() {
+                    return this.fill ? 'bolder': '';
+                },
+                fontSize: function() {
+                    return this.fill ? '30px': '14px';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

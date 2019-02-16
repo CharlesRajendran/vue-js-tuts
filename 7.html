@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind, v-html</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div id="vue-scope-area-6">
+        <h1>{{ topicFunc() }}</h1>
+
+        <!-- Computed properties will watch for all the contributing data properties -->
+        <!-- Good when we want to show property update immediately -->
+        <div>
+           <input v-model:value="message" />
+           <h2> {{ message }} </h2>
+           <h3>{{ reversedMessage }}</h3>
+        </div>
+    </div>
+
+    <script>
+        // vue instance will control a area in your page
+        new Vue({
+            el: "#vue-scope-area-6",
+            data: {
+                topics: ["Computed Properties"],
+                message: "hiii there"
+            },
+            methods: {
+                topicFunc: function() {
+                    return this.topics.toString()
+                }
+            },
+            computed: {
+                reversedMessage: function() {
+                    return this.message.split(" ").reverse().join(" ");
+                }
+            }
+        })
+    </script>
+</body>
+</html>
