@@ -25,6 +25,12 @@
             </li>
         </ul>
 
+        <!-- If you want not to have a container div kind of element -->
+        <template v-for="founder in founders">
+            <h3>{{founder.name}}</h3>
+            <p>{{founder.company}}</p>
+        </template>
+
     </div>
     <script>
         new Vue({

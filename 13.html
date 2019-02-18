@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="vue-instance">
+        <h1>{{ topicFunc() }}</h1>
+        <!-- Like template string -->
+        <input ref="input-name" v-on:keyup="printName()" />
+        <span ref="display-name">{{ printedName }}</span>
+    </div>
+
+
+    <script>
+        let instance1 = new Vue({
+            el: "#vue-instance",
+            data: {
+                topics: ["Vue Refs"]
+            },
+            methods: {
+                topicFunc: function() {
+                    return this.topics.toString()
+                },
+                printName: function() {
+                    // Get all the references
+                    console.log(this.$refs)
+
+                    // Take the input from input-name
+                    let name = this.$refs["input-name"].value;
+
+                    // Print it to the span
+                    this.$refs["display-name"].innerHTML = name;
+
+                }
+            },
+            computed: {
+
+            }
+        })
+    </script>
+</body>
+</html>
