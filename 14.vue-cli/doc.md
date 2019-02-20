@@ -88,7 +88,40 @@ h3 {
 ~~~
 
 
+3. `props`, this is to get the values as attributes for components, similar to property binding in angular
+~~~
+<!-- HelloWorld Component -->
+<template>
+  <div>
+    My name is {{ msg }}
+  </div>
+</template>
 
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: {
+      type: String
+    }
+  },
+};
+~~~
+- we can use this as properties 
+~~~
+<!-- App Component -->
+<HelloWorld msg="Charles"/>
+~~~
 
+- If we are using data properties as the value for the attribute then we have to use v-bind
+~~~
+<!-- App Component -->
+<HelloWorld v-bind:msg="name"/>
 
-
+<script>
+new Vue({
+  data: {
+    name: "Charles"
+  }
+})
+</script>
+~~~
