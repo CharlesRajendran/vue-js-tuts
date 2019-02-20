@@ -88,7 +88,7 @@ h3 {
 ~~~
 
 
-3. `props`, this is to get the values as attributes for components, similar to property binding in angular
+3. `props`, this is to get the values as attributes for components, similar to property binding in angular, [docs](https://vuejs.org/v2/guide/components-props.html)
 ~~~
 <!-- HelloWorld Component -->
 <template>
