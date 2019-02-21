@@ -185,5 +185,9 @@ methods: {
   },
 },
 ~~~
+
 <img src="https://github.com/CharlesRajendran/vue-js-tuts/blob/master/images/reference-properties.JPG" />
 - **Always remember, mutating a property is not recomended**
+
+5. Event Binding
+
