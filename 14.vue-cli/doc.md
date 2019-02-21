@@ -147,7 +147,7 @@ new Vue({
   },
 ~~~
 In the above scenario, when I tried to change the `msg` property it will only change the current elements  `msg` property and not the second HelloWorld Tag
-![Image]('../images/primitive-properties.JPG')
+<img src="https://github.com/CharlesRajendran/vue-js-tuts/blob/master/images/primitive-properties.JPG" />
 
 
 - Arrays, Objects are reference properties, which means, that property is shared among all the components, if you change one it will update in other places aswell, since we are actually passing just a reference to the actual property.
@@ -185,5 +185,5 @@ methods: {
   },
 },
 ~~~
-~[Image](reference image)
+<img src="https://github.com/CharlesRajendran/vue-js-tuts/blob/master/images/reference-properties.JPG" />
 - **Always remember, mutating a property is not recomended**
