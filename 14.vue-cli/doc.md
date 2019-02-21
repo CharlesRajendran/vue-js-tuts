@@ -125,3 +125,65 @@ new Vue({
 })
 </script>
 ~~~
+
+4. Reference Types vs Primitive Types properties
+- string, number, boolean type properties are primitive type properties
+  - These type of properties will not be shared among differnt components
+~~~
+  // App.vue file
+  <HelloWorld msg="Charles"/>
+  <HelloWorld msg="Charles"/>
+~~~
+
+~~~
+  // HelloWorld.vue file
+  <button v-on:click="changeMessage()">Change Message</button>
+  ...
+  ...
+   methods: {
+    changeMessage() {
+      this.msg = 'Dilip';
+    },
+  },
+~~~
+In the above scenario, when I tried to change the `msg` property it will only change the current elements  `msg` property and not the second HelloWorld Tag
+![Image]('../images/primitive-properties.JPG')
+
+
+- Arrays, Objects are reference properties, which means, that property is shared among all the components, if you change one it will update in other places aswell, since we are actually passing just a reference to the actual property.
+~~~
+// App.vue
+<HelloWorld v-bind:legends="legends" />
+<HelloWorld v-bind:legends="legends" />
+...
+...
+data() {
+  return {
+    legends: [
+      'Steve',
+      'Bill',
+      'Mark',
+      'Sundar',
+      'Elon',
+    ],
+  };
+},
+~~~
+
+~~~
+// HelloWorld.vue
+<button v-on:click="changeMessage()">Change Message</button>
+My Fav Legends:
+<ul>
+  <li v-for="l in legends"> {{ l }}</li>
+</ul>
+...
+...
+methods: {
+  changeMessage() {
+    this.legends.push('Siraj');
+  },
+},
+~~~
+~[Image](reference image)
+- **Always remember, mutating a property is not recomended**

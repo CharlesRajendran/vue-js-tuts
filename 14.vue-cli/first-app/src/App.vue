@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Charles"/>
+    <HelloWorld v-bind:legends="legends" />
+    <HelloWorld v-bind:legends="legends" />
   </div>
 </template>
 
@@ -10,9 +11,20 @@ import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'app',
+  data() {
+    return {
+      legends: [
+        'Steve',
+        'Bill',
+        'Mark',
+        'Sundar',
+        'Elon',
+      ],
+    };
+  },
   components: {
     HelloWorld,
-  }
+  },
 };
 </script>
 
