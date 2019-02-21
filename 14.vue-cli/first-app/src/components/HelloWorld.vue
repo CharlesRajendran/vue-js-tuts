@@ -1,11 +1,7 @@
 <template>
   <div>
     <button v-on:click="changeMessage()">Change Message</button>
-    My Fav Legends:
-    <ul>
-      <li v-for="l in legends"> {{ l }}</li>
-    </ul>
-
+    Text is change : {{message}}
     <hr />
   </div>
 </template>
@@ -14,13 +10,13 @@
 export default {
   name: 'HelloWorld',
   props: {
-    legends: {
-      type: Array,
+    message: {
+      type: String,
     },
   },
   methods: {
     changeMessage() {
-      this.legends.push('Siraj');
+      this.$emit('onmsgchanged', 'Changed Bro...');
     },
   },
 };

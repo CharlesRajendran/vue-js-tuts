@@ -190,4 +190,29 @@ methods: {
 - **Always remember, mutating a property is not recomended**
 
 5. Event Binding
+   -  Using event bindgin we can actually achive the reference property behaviour to primitive properties, by setting the parents data property
+~~~
+<!-- HelloWorld Component -->
+<button v-on:click="changeMessage()">Change Message</button>
+Text is change : {{message}}
+...
+...
+methods: {
+  changeMessage() {
+    this.$emit('onmsgchanged', 'Changed Bro...');
+  },
+},
+~~~
 
+~~~
+<!-- App Component -->
+<HelloWorld v-bind:message="msg" v-on:onmsgchanged="changeParent($event)" />
+<HelloWorld v-bind:message="msg" v-on:onmsgchanged="changeParent($event)" />
+...
+...
+ methods: {
+  changeParent(e) {
+    this.msg = e;
+  },
+},
+~~~
