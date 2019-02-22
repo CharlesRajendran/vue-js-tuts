@@ -249,3 +249,67 @@ created() {
     });
   },
 ~~~
+
+7. Lifecycle Hooks ([Docs]('https://vuejs.org/v2/api/#Options-Lifecycle-Hooks'))
+  - There are number of different life cycle hooks in vue.
+    - beforeCreate
+      -  immediately after the instance has been initialized, before data observation and event/watcher setup.
+    <br />
+    - created
+      - after the instance is created. At this stage, the instance has finished processing the options which means the following have been set up: 
+        - data observation
+        - computed properties 
+        - methods
+        - watch/event callbacks.
+        -  not $el, since the document is not mounted
+    <br />
+    - beforeMount
+      - before the mounting begins: the `render` function is about to be called for the first time.
+    <br />
+    - mounted
+      - Called after the instance has been mounted, where el is replaced by the newly created `vm.$el`
+      - Note that mounted does not guarantee that all child components have also been mounted. If you want to wait until the entire view has been rendered, you can use `vm.$nextTick` inside of mounted.
+    <br />
+    - beforeUpdate
+      - Called when data changes, before the DOM is patched. 
+      - This is a good place to access the existing DOM before an update, `e.g. to remove manually added event listeners.`
+    <br />
+    - updated
+      - Called after a data change causes the virtual DOM to be re-rendered and patched.
+      - The component’s DOM will have been updated when this hook is called, so you can perform DOM-dependent operations here. 
+        - However, in most cases you should avoid changing state inside the hook. To react to state changes, it’s usually better to use a `computed property` or `watcher` instead.
+    <br />
+    - activated
+      - Called when a kept-alive(it will cache the components) component is activated.
+        - [Build-in component keep-alive](https://vuejs.org/v2/api/#keep-alive)
+        - [Dynamic component keep-alive](https://vuejs.org/v2/guide/components.html#keep-alive)
+    <br />
+    - deactivated
+      - Called when a kept-alive component is deactivated.
+    <br />
+    - beforeDestroy
+      - Called right before a Vue instance is destroyed. 
+      - At this stage the instance is still fully functional.
+    <br />
+    - destroyed
+      - Called after a Vue instance has been destroyed. When this hook is called, all directives of the Vue instance have been unbound, all event listeners have been removed, and all child Vue instances have also been destroyed.
+    <br />
+    - errorCaptured
+      - Called when an error from any descendent component is captured. 
+      - The hook receives three arguments: 
+        - the error, 
+        - the component instance that triggered the error, 
+        - a string containing information on where the error was captured.
+
+~~~
+// Example Lifecycle Hook
+export default {
+  name: 'Second',
+  ...
+  ...
+  created() {
+    ...
+    ...
+  },
+};
+~~~
