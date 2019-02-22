@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld v-bind:message="msg" v-on:onmsgchanged="changeParent($event)" />
-    <HelloWorld v-bind:message="msg" v-on:onmsgchanged="changeParent($event)" />
+    <HelloWorld />
+    <second></second>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
+import Second from './components/Second.vue';
 
 export default {
   name: 'app',
@@ -18,6 +19,7 @@ export default {
   },
   components: {
     HelloWorld,
+    Second,
   },
   methods: {
     changeParent(e) {

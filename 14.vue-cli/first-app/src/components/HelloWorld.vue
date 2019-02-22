@@ -1,22 +1,18 @@
 <template>
   <div>
-    <button v-on:click="changeMessage()">Change Message</button>
-    Text is change : {{message}}
-    <hr />
+    <button v-on:click="emitEvent()">Emit Event</button>
   </div>
 </template>
 
 <script>
+
+import { eBus } from '../main';
+
 export default {
   name: 'HelloWorld',
-  props: {
-    message: {
-      type: String,
-    },
-  },
   methods: {
-    changeMessage() {
-      this.$emit('onmsgchanged', 'Changed Bro...');
+    emitEvent() {
+      eBus.$emit('EventBus', 'Event Emitted Bro...');
     },
   },
 };

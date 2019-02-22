@@ -216,3 +216,36 @@ methods: {
   },
 },
 ~~~
+
+6. Event Bus
+- This is some what similar to the broadcasting of angular
+  - Created the event bus object in main.js file, and export it.
+~~~
+// Main.js file
+export const eBus = new Vue();
+~~~
+  - Emit the event with the imported event bus object
+~~~
+// HelloWorld.vue
+<button v-on:click="emitEvent()">Emit Event</button>
+...
+...
+<script>
+import { eBus } from '../main';
+...
+...
+methods: {
+  emitEvent() {
+    eBus.$emit('EventBus', 'Event Emitted Bro...');
+  },
+},
+~~~
+  - Watch for the events in other components
+~~~
+// Second.vue
+created() {
+    eBus.$on('EventBus', (eventData) => {
+      this.received = eventData;
+    });
+  },
+~~~
