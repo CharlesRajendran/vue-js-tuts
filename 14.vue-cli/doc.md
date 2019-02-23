@@ -313,3 +313,65 @@ export default {
   },
 };
 ~~~
+
+8. slots ([Docs](https://vuejs.org/v2/guide/components-slots.html))
+  - It is kind of like a placeholder, which can accept whatever we pass from the other side.
+    - for example, let's say we have many forms in our application, and all the forms follow kind of the same structure, like a header, bunch of fields, and a footer. Here we can have 3 slots, and can say what we need to put here from the place where this component is used. 
+  - In 2.6.0, we introduced a new unified syntax (the v-slot directive) for named and scoped slots.
+    - It replaces the slot and slot-scope attributes, which are now deprecated. [read](https://vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax)
+
+  - **Example 1**
+~~~
+// FormSlot.vue
+<template>
+    <div>
+        <h1>This is normal</h1>
+        <slot></slot>
+    </div>
+</template>
+~~~
+
+~~~
+// App.vue
+<div id="app">
+  <FormSlot>This will be slot text</FormSlot>
+  <FormSlot>This is another slot implementation</FormSlot>
+</div>
+~~~
+**output**
+![SlotImage]()
+
+  - **Example 2:** Multiple Slots
+~~~
+// FormSlot.vue
+<template>
+    <div>
+        <h1>This is normal</h1>
+        <h3>Name</h3>
+        <slot name="name"></slot>
+        <h3>Age</h3>
+        <slot name="age"></slot>
+    </div>
+</template>
+~~~
+~~~
+// App.vue
+<FormSlot>
+  <h4 slot="name">Charles</h4>
+  <h4 slot="age">26</h4>
+</FormSlot>
+~~~
+- Also we can use this syntax aswell. `v-slot:<slot-name>`
+  - but it needs to be inside `template` tag
+~~~
+// App.vue
+<FormSlot>
+  <template v-slot:name>
+    <h4>Dilip</h4>
+  </template>
+  
+  <h4 slot="age">26</h4>
+</FormSlot>
+~~~
+
+
