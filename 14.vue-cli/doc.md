@@ -339,7 +339,7 @@ export default {
 </div>
 ~~~
 **output**
-![SlotImage]()
+![SlotImage](https://github.com/CharlesRajendran/vue-js-tuts/blob/master/images/slot.JPG)
 
   - **Example 2:** Multiple Slots
 ~~~
@@ -375,3 +375,4 @@ export default {
 ~~~
 
 
+9. Dynamically
