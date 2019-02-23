@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-on:click="emitEvent()">Emit Event</button>
+    <p>Hi There, This is HelloWorld Component</p>
   </div>
 </template>
 

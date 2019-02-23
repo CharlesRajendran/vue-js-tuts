@@ -375,4 +375,16 @@ export default {
 ~~~
 
 
-9. Dynamically
+9. Dynamic Components
+~~~
+<component v-bind:is="some-variable"></component>
+~~~
+
+10. keep-alive
+- It will keep the component alive, will not destroy the component, so you can get the component states even if you switch to another component and cameback.
+
+~~~
+<keep-alive>
+  <component v-bind:is="component"></component>
+</keep-alive>
+~~~

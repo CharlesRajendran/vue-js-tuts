@@ -1,11 +1,10 @@
 <template>
   <div id="app">
-    <FormSlot>
-      <template v-slot:name>
-        <h4>Dilip</h4>
-      </template>
-      <h4 slot="age">26</h4>
-    </FormSlot>
+    <button @click="component = 'HelloWorld'">Hello Component</button>
+    <button @click="component = 'FormSlot'">Form Component</button>
+    <keep-alive>
+      <component v-bind:is="component"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -19,6 +18,7 @@ export default {
   data() {
     return {
       msg: 'Initial Text',
+      component: 'FormSlot'
     };
   },
   components: {
