@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <button @click="component = 'HelloWorld'">Hello Component</button>
-    <button @click="component = 'FormSlot'">Form Component</button>
     <keep-alive>
       <component v-bind:is="component"></component>
     </keep-alive>

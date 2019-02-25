@@ -388,3 +388,57 @@ export default {
   <component v-bind:is="component"></component>
 </keep-alive>
 ~~~
+
+11. Form Handling - we use v-model which help us work with form elements such as, input, select, checkox, radio,...
+~~~
+// HTML
+<form>
+<div>
+    <label>First Name</label>
+    <input id="firstname" v-model="profile.fname" />
+</div>
+<div>
+    <label>Last Name</label>
+    <input id="lastname" v-model="profile.lname" />
+</div>
+<div>
+    <label>Gender</label>
+    <input type="radio" value="male" v-model="profile.gender" /> male
+    <input type="radio" value="female" v-model="profile.gender" /> female
+</div>
+<div>
+    <label>Courses</label>
+    <input type="checkbox" value="maths" v-model="profile.courses" /> Maths
+    <input type="checkbox" value="science" v-model="profile.courses" /> Science
+</div>
+<div>
+    <label>Country</label>
+    <select v-model="profile.country">
+        <option v-for="country in countries">{{ country }}</option>
+    </select>
+</div>
+</form>
+~~~
+
+~~~
+// Vue File
+export default {
+  ...
+  ...
+  data() {
+      return {
+          countries: ['Sri Lanka', 'India', 'Australia', 'Other'],
+          profile:  {
+              fname: '',
+              lname: '',
+              gender: '',
+              courses: [],
+              country: '',
+          }
+      }
+  },
+}
+~~~
+
+##### Extra note: lazy modifier, in v-model, we have a modifier call `lazy` which will prevent updating the v-model for keyups and only update when `focus goes out`.
+`v-model.lazy="fname"`
