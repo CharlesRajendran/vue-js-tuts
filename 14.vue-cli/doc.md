@@ -442,3 +442,35 @@ export default {
 
 ##### Extra note: lazy modifier, in v-model, we have a modifier call `lazy` which will prevent updating the v-model for keyups and only update when `focus goes out`.
 `v-model.lazy="fname"`
+
+12. HTTP Service with Vue Resource
+We can use any library to fetch data, such as,
+  - fetch api
+  - axios
+  - Jquery, etc. 
+
+but the best would be to use vue-resource
+
+  1. Install Vue Resource 
+        - `npm install vue-resource --save`
+
+  2. Register Vue Resource in the `main.js` file
+~~~
+  import VueResource from 'vue-resource';
+  ...
+  ...
+  Vue.use(VueResource);
+~~~
+  3. Use the `http` servi=ce any where with `this.$http`
+       - Promise based
+       - Usually the http calls which needs to be loaded in the page load time are put inside `creat lifecycle hook`
+~~~
+created() {
+  this.$http.get('https://jsonplaceholder.typicode.com/posts')
+    .then((result) => {
+        this.posts = result.body;
+    }).catch((err) => {
+        console.log(err);
+    });
+}
+~~~

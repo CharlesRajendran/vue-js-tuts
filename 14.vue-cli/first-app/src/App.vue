@@ -1,33 +1,24 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <component v-bind:is="component"></component>
-    </keep-alive>
+    <http></http>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import Second from './components/Second.vue';
-import FormSlot from './components/FormSlot.vue';
+import HttpModule from './components/HTTP.vue';
 
 export default {
   name: 'app',
   data() {
     return {
-      msg: 'Initial Text',
-      component: 'FormSlot'
+      
     };
   },
   components: {
-    HelloWorld,
-    Second,
-    FormSlot
+    'http': HttpModule
   },
   methods: {
-    changeParent(e) {
-      this.msg = e;
-    },
+    
   },
 };
 </script>
