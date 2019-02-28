@@ -474,3 +474,28 @@ created() {
     });
 }
 ~~~
+
+13. Vue Directive
+ - there may be cases where you need some low-level DOM access on plain elements, and this is where custom directives would still be useful
+ - There are life cycle hooks for directives aswell, such as bind, inserted, updated, unbind, ...
+ - We can use a directive inside a component only, like we have components option, we have directive option aswell.
+ - [Documentation](https://vuejs.org/v2/guide/custom-directive.html)
+
+~~~
+// HTML
+// don't forget to prefix the element with v-* 
+
+<p v-font="'consolas'">Hello World Brother...</p>
+~~~
+
+~~~
+// Main.js (if you want to register the directive to the entire application)
+Vue.directive('font', {
+  bind(el, binding, vnode) {
+    el.style.fontFamily = binding.value;
+  },
+});
+
+el - dom element
+binding - value we set to the attribute
+~~~

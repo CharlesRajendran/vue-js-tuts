@@ -7,6 +7,12 @@ Vue.use(VueResource);
 
 Vue.config.productionTip = false;
 
+Vue.directive('font', {
+  bind(el, binding, vnode) {
+    el.style.fontFamily = binding.value;
+  },
+});
+
 export const eBus = new Vue();
 
 new Vue({
