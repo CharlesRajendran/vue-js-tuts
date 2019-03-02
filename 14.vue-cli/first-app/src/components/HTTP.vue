@@ -1,6 +1,6 @@
 <template>
     <div id="container">
-        <p v-font="'consolas'">Hello World Brother...</p>
+        <p v-font="'Consolas'">{{ "Hello World Brother..." | no-space }}</p>
     </div>
 </template>
 <script lang="ts">

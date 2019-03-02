@@ -499,3 +499,16 @@ Vue.directive('font', {
 el - dom element
 binding - value we set to the attribute
 ~~~
+
+14. Vue Filters (Global)
+~~~
+// TS
+Vue.filter('no-space', function(value){
+  return value.split(' ').join('');
+});
+~~~
+
+~~~
+// HTML
+{{ "Hello World Brother..." | no-space }}
+~~~

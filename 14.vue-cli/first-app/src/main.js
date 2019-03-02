@@ -13,6 +13,10 @@ Vue.directive('font', {
   },
 });
 
+Vue.filter('no-space', function(value){
+  return value.split(' ').join('');
+});
+
 export const eBus = new Vue();
 
 new Vue({
