@@ -512,3 +512,101 @@ Vue.filter('no-space', function(value){
 // HTML
 {{ "Hello World Brother..." | no-space }}
 ~~~
+
+15. Vue Mixins
+- Mixin is similar to sass mixin, where we can reuse some code.
+
+- First Create Mixins Separately (I have a `src/mixins` folder and have all the mixins as js files(`CommonCode.js`) )
+~~~
+export default {
+    methods: {
+        abc: function(text) {
+            console.log(`Hello World ${text}`);
+        },
+    },
+}
+~~~
+- Create your `component` and add the mixin in `mixins` property.
+~~~
+<template>
+    <button v-on:click="abc('Component 1')">Button 1 Click</button>
+</template>
+<script>
+import CommonCode from '../mixin/CommonCode.js';
+export default {
+    mixins: [CommonCode]
+}
+</script>
+~~~
+
+16. Vue Routing
+- Install the router plugin
+~~~
+npm install --save vue-router
+~~~
+
+- Import it in the main.js file and use it.
+~~~
+// Main.js
+import VueRouter from 'vue-router';
+...
+...
+Vue.use(VueRouter)
+~~~
+
+- create the `router` object given the routes array
+~~~
+import CompOne from './components/CompOne.vue';
+import CompTwo from './components/CompTwo.vue';
+...
+...
+const router = new VueRouter({
+  routes: [
+    { path: '/two', component: CompTwo },
+    { path: '*', component: CompOne }, // * mean's other than two match everything // but always must put the generic paths later 
+  ],
+});
+~~~
+
+- add the router to the `main vue app`
+
+~~~
+new Vue({
+  render: h => h(App),
+  router, // should be router: something // since the name is same we can avoid putting key and value of the object
+}).$mount('#app');
+~~~
+
+- We need to have router outlet like tag to support routing.
+  - In app.vue, add the `router-view` tag
+~~~
+<template>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</template>
+~~~
+
+17. Router Modes
+
+- In the above example, if you see the url, it will be something like this. `http://localhost:8080/#/two`, which is quit annoying, specially in production. so there are two modes avaible in vue routing, those are:
+  - Hash Mode 
+    - which is the default and the above
+    - In this mode, the browser is not sending any request to the server, instead it is loading like partial loading, name and href, only load part of the index.js file
+
+  - History Mode
+    - Normally when you enter a address like `/sample`, this will look to the server for this url, if you configure you vue app to support history mode, then for all the request url (url's that are not in the server) it will load the `index.html` (which is having the app component of vue app, so all the routing will be handle with that app.)
+    - In history mode you need to configure your server as well, like other than some specific url, `*` to point the index.html page. (in development the vue server is configured in such manner so we can experiment with it)
+
+- To add the routing mode, you can use the `VueRouter` object.
+~~~
+const router = new VueRouter({
+  routes: [
+    ...
+    ...
+  ],
+  mode: 'history',
+});
+
+// now you can access http://localhost:8080/path
+~~~

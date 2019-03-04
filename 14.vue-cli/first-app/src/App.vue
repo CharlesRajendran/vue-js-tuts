@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <http></http>
+    <div id="navbar">
+
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HttpModule from './components/HTTP.vue';
 
 export default {
   name: 'app',
@@ -15,7 +17,6 @@ export default {
     };
   },
   components: {
-    'http': HttpModule
   },
   methods: {
     
