@@ -12,7 +12,8 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
-    { path: '/two', component: CompTwo },
+    { path: '/two/:name', component: CompTwo },
+    { path: '/', component: CompOne },
     { path: '*', component: CompOne },
   ],
   mode: 'history',

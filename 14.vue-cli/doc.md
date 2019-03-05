@@ -88,7 +88,8 @@ h3 {
 ~~~
 
 
-3. `props`, this is to get the values as attributes for components, similar to property binding in angular, [docs](https://vuejs.org/v2/guide/components-props.html)
+3. ### Props 
+- `props`, this is to get the values as attributes for components, similar to property binding in angular, [docs](https://vuejs.org/v2/guide/components-props.html)
 ~~~
 <!-- HelloWorld Component -->
 <template>
@@ -126,7 +127,7 @@ new Vue({
 </script>
 ~~~
 
-4. Reference Types vs Primitive Types properties
+1. ### Reference Types vs Primitive Types properties
 - string, number, boolean type properties are primitive type properties
   - These type of properties will not be shared among differnt components
 ~~~
@@ -189,7 +190,7 @@ methods: {
 <img src="https://github.com/CharlesRajendran/vue-js-tuts/blob/master/images/reference-properties.JPG" />
 - **Always remember, mutating a property is not recomended**
 
-5. Event Binding
+5. ### Event Binding
    -  Using event bindgin we can actually achive the reference property behaviour to primitive properties, by setting the parents data property
 ~~~
 <!-- HelloWorld Component -->
@@ -217,7 +218,7 @@ methods: {
 },
 ~~~
 
-6. Event Bus
+6. ### Event Bus
 - This is some what similar to the broadcasting of angular
   - Created the event bus object in main.js file, and export it.
 ~~~
@@ -250,7 +251,7 @@ created() {
   },
 ~~~
 
-7. Lifecycle Hooks ([Docs]('https://vuejs.org/v2/api/#Options-Lifecycle-Hooks'))
+7. ### Lifecycle Hooks ([Docs]('https://vuejs.org/v2/api/#Options-Lifecycle-Hooks'))
   - There are number of different life cycle hooks in vue.
     - beforeCreate
       -  immediately after the instance has been initialized, before data observation and event/watcher setup.
@@ -314,7 +315,7 @@ export default {
 };
 ~~~
 
-8. slots ([Docs](https://vuejs.org/v2/guide/components-slots.html))
+8. ### Slots ([Docs](https://vuejs.org/v2/guide/components-slots.html))
   - It is kind of like a placeholder, which can accept whatever we pass from the other side.
     - for example, let's say we have many forms in our application, and all the forms follow kind of the same structure, like a header, bunch of fields, and a footer. Here we can have 3 slots, and can say what we need to put here from the place where this component is used. 
   - In 2.6.0, we introduced a new unified syntax (the v-slot directive) for named and scoped slots.
@@ -375,12 +376,12 @@ export default {
 ~~~
 
 
-9. Dynamic Components
+9. ### Dynamic Components
 ~~~
 <component v-bind:is="some-variable"></component>
 ~~~
 
-10. keep-alive
+10. ### keep-alive
 - It will keep the component alive, will not destroy the component, so you can get the component states even if you switch to another component and cameback.
 
 ~~~
@@ -389,7 +390,8 @@ export default {
 </keep-alive>
 ~~~
 
-11. Form Handling - we use v-model which help us work with form elements such as, input, select, checkox, radio,...
+11. ### Form Handling 
+  - we use v-model which help us work with form elements such as, input, select, checkox, radio,...
 ~~~
 // HTML
 <form>
@@ -443,7 +445,7 @@ export default {
 ##### Extra note: lazy modifier, in v-model, we have a modifier call `lazy` which will prevent updating the v-model for keyups and only update when `focus goes out`.
 `v-model.lazy="fname"`
 
-12. HTTP Service with Vue Resource
+1.  ### HTTP Service with Vue Resource
 We can use any library to fetch data, such as,
   - fetch api
   - axios
@@ -475,7 +477,7 @@ created() {
 }
 ~~~
 
-13. Vue Directive
+13. ### Vue Directive
  - there may be cases where you need some low-level DOM access on plain elements, and this is where custom directives would still be useful
  - There are life cycle hooks for directives aswell, such as bind, inserted, updated, unbind, ...
  - We can use a directive inside a component only, like we have components option, we have directive option aswell.
@@ -500,7 +502,7 @@ el - dom element
 binding - value we set to the attribute
 ~~~
 
-14. Vue Filters (Global)
+14. ### Vue Filters (Global)
 ~~~
 // TS
 Vue.filter('no-space', function(value){
@@ -513,7 +515,7 @@ Vue.filter('no-space', function(value){
 {{ "Hello World Brother..." | no-space }}
 ~~~
 
-15. Vue Mixins
+15. ### Vue Mixins
 - Mixin is similar to sass mixin, where we can reuse some code.
 
 - First Create Mixins Separately (I have a `src/mixins` folder and have all the mixins as js files(`CommonCode.js`) )
@@ -539,7 +541,7 @@ export default {
 </script>
 ~~~
 
-16. Vue Routing
+16. ### Vue Routing
 - Install the router plugin
 ~~~
 npm install --save vue-router
@@ -587,7 +589,7 @@ new Vue({
 </template>
 ~~~
 
-17. Router Modes
+17. ### Router Modes
 
 - In the above example, if you see the url, it will be something like this. `http://localhost:8080/#/two`, which is quit annoying, specially in production. so there are two modes avaible in vue routing, those are:
   - Hash Mode 
@@ -609,4 +611,53 @@ const router = new VueRouter({
 });
 
 // now you can access http://localhost:8080/path
+~~~
+
+18. ### Router Link
+
+- easy way to link vue routes
+~~~
+<router-link to="/">One</router-link>
+~~~
+
+- to style the active link
+  - there will be some classes attached to router-link `<a>` tag which is active
+  - `router-link-exact-active router-link-active`
+    - we can use this to style, specially the  `router-link-exact-active`
+
+19. ### Router Parameter
+- #### Path Param
+- Declare the route to support path param
+~~~
+const router = new VueRouter({
+  routes: [
+    { path: '/two/:name', component: CompTwo },
+    ...
+    ...
+~~~
+  - Accessing that in the component (`CompTwo`)
+
+~~~
+ data(){
+    return {
+      name: this.$route.params.name
+      ...
+      ...
+    }
+  },
+~~~
+- #### Query Param
+~~~
+<router-link v-bind:to="'/?test=' + queryParam">One</router-link>
+~~~
+  -  Accesing inside the component `CompTwo`
+
+~~~
+data(){
+    return {
+      name: this.$route.query.test
+      ...
+      ...
+    }
+  },
 ~~~
