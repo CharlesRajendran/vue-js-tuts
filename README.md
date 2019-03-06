@@ -1,6 +1,6 @@
 # <u>Vue.JS</u>
 
-### <u>Vue Instances + Data and Methods.</u>
+### 1. Vue Instances + Data and Methods.
 - ##### HTML
 ~~~
 <div id="vue-scope-area-1">
@@ -27,7 +27,7 @@
 </script>
 ~~~
 
-### <u>Property Binding in Vue with `v-bind`</u>
+### 2. Property Binding in Vue with `v-bind`
 
 - ##### HTML
 ~~~
@@ -45,7 +45,7 @@ new Vue({
 })
 ~~~
 
-### innerHTML in vue with  `v-html`
+### 3. innerHTML in vue with  `v-html`
 
 - ##### HTML
 ~~~
@@ -63,7 +63,7 @@ new Vue({
 })
 ~~~
 
-### Event Binding in Vue
+### 4. Event Binding in Vue
 
 - ##### HTML
 ~~~
@@ -92,7 +92,7 @@ new Vue({
 })
 ~~~
 
-#### Event Modifiers [documentation](https://vuejs.org/v2/guide/events.html#Event-Modifiers)
+#### 4.1 Event Modifiers [documentation](https://vuejs.org/v2/guide/events.html#Event-Modifiers)
 
 - ##### HTML
 ~~~
@@ -103,7 +103,7 @@ new Vue({
 <a @click.prevent="alertOnce" href="https://facebook.com">Will prevent default behaviour</a>
 ~~~
 
-#### Keyboard Modifiers
+#### 4.2 Keyboard Modifiers
 
 - ##### HTML
 ~~~
@@ -118,7 +118,7 @@ new Vue({
 <input @keydown.65.exact="enterPressed" placeholder="Fire Only when tou just press enter" />
 ~~~
 
-### Two way data binding with `v-model`
+### 5. Two way data binding with `v-model`
 - ##### HTML
 ~~~
 <div>
@@ -138,7 +138,7 @@ new Vue({
 })
 ~~~
 
-### Computed Properties
+### 6. Computed Properties
 
 - ##### HTML
 ~~~
@@ -171,7 +171,7 @@ new Vue({
 ~~~
 - A better usage of computed property application is search filter, checkout the `post-search` application
 
-### Class Binding
+### 7. Class Binding
 - ##### HTML
 ~~~
 <button v-on:click="fill = !fill" > Toggle Fill </button>
@@ -181,12 +181,12 @@ new Vue({
 </div>
 ~~~
 
-### Style Binding
+### 8. Style Binding
 ~~~
 <p v-bind:style="{fontWeight:isBold, fontSize: fontSize}"> Is Bold or Not <p>
 ~~~
 
-### Vue Conditionals `(v-if, v-else-if, v-else)`
+### 9. Vue Conditionals `(v-if, v-else-if, v-else)`
 - ##### HTML
 ~~~
 <h1 v-if="show == 0">Show Red</h1>
@@ -194,16 +194,16 @@ new Vue({
 <h1 v-else="show == 2">Show Green</h1>
 ~~~
 
-#### `v-show` to control the display property of the element
+#### 9.1 `v-show` to control the display property of the element
 
 - ##### HTML
 ~~~
 <h1 v-show="show == 0">Show Red</h1>
 ~~~
 
-### Iteration with `v-for`
+### 10. Iteration with `v-for`
 
-##### Basic
+##### 10.1 Basic
 - ##### HTML
 ~~~
 <ul>
@@ -229,7 +229,7 @@ new Vue({
 })
 ~~~
 
-##### With Index
+##### 10.2 With Index
 - ##### HTML
 ~~~
 <li v-for="(founder, index) in founders">
@@ -246,7 +246,7 @@ new Vue({
 </template>
 ~~~
 
-### Working with multiple instances and sharing/modifiying data between each other
+### 11. Working with multiple instances and sharing/modifiying data between each other
 - ##### JS
 ~~~
 <script>
@@ -284,7 +284,7 @@ new Vue({
 </div>
 ~~~
 
-### Vue components
+### 12. Vue components
 ~~~
 let nameComponent = Vue.component('my-name', {
     template: '<h2> {{ firstname }}</h2>',
@@ -299,7 +299,7 @@ let nameComponent = Vue.component('my-name', {
 })
 ~~~
 
-### Access DOM element properites with `$refs` (equivalent to angular `template variable`)
+### 13. Access DOM element properites with `$refs` (equivalent to angular `template variable`)
 - ##### HTML
 ~~~
 <input ref="input-name" v-on:keyup="printName()" />
