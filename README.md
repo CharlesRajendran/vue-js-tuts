@@ -26,7 +26,7 @@
     })
 </script>
 ~~~
-
+<br />
 ### 2. Property Binding in Vue with `v-bind`
 
 - ##### HTML
@@ -44,7 +44,7 @@ new Vue({
     }
 })
 ~~~
-
+<br />
 ### 3. innerHTML in vue with  `v-html`
 
 - ##### HTML
@@ -62,7 +62,7 @@ new Vue({
     }
 })
 ~~~
-
+<br />
 ### 4. Event Binding in Vue
 
 - ##### HTML
@@ -117,7 +117,7 @@ new Vue({
 <!-- Exact - this will call functions only when you press the exact key or event -->
 <input @keydown.65.exact="enterPressed" placeholder="Fire Only when tou just press enter" />
 ~~~
-
+<br />
 ### 5. Two way data binding with `v-model`
 - ##### HTML
 ~~~
@@ -137,7 +137,7 @@ new Vue({
     }
 })
 ~~~
-
+<br />
 ### 6. Computed Properties
 
 - ##### HTML
@@ -170,7 +170,7 @@ new Vue({
 })
 ~~~
 - A better usage of computed property application is search filter, checkout the `post-search` application
-
+<br />
 ### 7. Class Binding
 - ##### HTML
 ~~~
@@ -180,12 +180,12 @@ new Vue({
     ...
 </div>
 ~~~
-
+<br />
 ### 8. Style Binding
 ~~~
 <p v-bind:style="{fontWeight:isBold, fontSize: fontSize}"> Is Bold or Not <p>
 ~~~
-
+<br />
 ### 9. Vue Conditionals `(v-if, v-else-if, v-else)`
 - ##### HTML
 ~~~
@@ -200,7 +200,7 @@ new Vue({
 ~~~
 <h1 v-show="show == 0">Show Red</h1>
 ~~~
-
+<br />
 ### 10. Iteration with `v-for`
 
 ##### 10.1 Basic
@@ -245,7 +245,7 @@ new Vue({
     <p>{{founder.company}}</p>
 </template>
 ~~~
-
+<br />
 ### 11. Working with multiple instances and sharing/modifiying data between each other
 - ##### JS
 ~~~
@@ -283,7 +283,7 @@ new Vue({
     <button @click="changeInstant1Prop()"> Change Name</button>
 </div>
 ~~~
-
+<br />
 ### 12. Vue components
 ~~~
 let nameComponent = Vue.component('my-name', {
@@ -298,7 +298,7 @@ let nameComponent = Vue.component('my-name', {
     }
 })
 ~~~
-
+<br />
 ### 13. Access DOM element properites with `$refs` (equivalent to angular `template variable`)
 - ##### HTML
 ~~~
