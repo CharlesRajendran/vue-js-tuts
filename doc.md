@@ -22,12 +22,12 @@ Vue UI : `npm install -g @vue/ui`
 - main.js 
   - like the module file in angular, which is the main file
 - App.vue
-  - way of creating reusable components, main component
+  - main component
 - Component Folder
   - A folder for custom components
 
 ##### What's is going on in the basic application
-1. Main.js file will be invoked and that has a vue instance that will render to the div (id = app) in the index.html, and the component that will be rendered is `App.vue`
+1. **Main.js** file will be invoked and that has a vue instance that will render to the div (id = app) in the index.html, and the component that will be rendered is `App.vue`
 
 ~~~
 import Vue from 'vue';
@@ -40,8 +40,8 @@ new Vue({
 }).$mount('#app');
 ~~~
 
-1. **App.Vue** file, `App.Vue` file is also another way of using `Vue.components` 
-    -   It has a template, and a data section
+2. **App.Vue** file, `App.Vue` file is also another way of using `Vue.components` 
+    -   It has a template, script and a style section
 ~~~
 <template>
   <div id="app">
