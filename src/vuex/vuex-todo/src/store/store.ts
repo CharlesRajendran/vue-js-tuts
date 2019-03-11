@@ -17,6 +17,31 @@ export const store = new Vuex.Store({
             return state.todos.filter(todo => {
                 return (todo.status == true)
             })
-        }
+        },
+        unfinishedTodos: state => {
+            return state.todos.filter(todo => {
+                return (todo.status == false)
+            })
+        },
+    },
+    mutations: {
+        addTask: (state, task) => {
+            state.todos.push({ id: state.todos.length + 1, task: task, status: false });
+        },
+        changeTaskStatus: (state, taskid) => {
+            state.todos.forEach(todo => {
+                if (todo.id == taskid) {
+                    todo.status = !(todo.status);
+                }
+            })
+        },
+    },
+    actions: {
+        addTaskAction: (context, task) => {
+            context.commit('addTask', task)
+        },
+        changeStatusAction: (context, taskid) => {
+            context.commit('changeTaskStatus', taskid);
+        },
     }
 });
